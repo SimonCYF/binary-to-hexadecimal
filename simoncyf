@@ -1,0 +1,104 @@
+#writer Simon
+Task 1: Number system conversion between binary, decimal and hexadecimal
+#[1] decimal to binary part
+def decToBin():
+  print("Enter value :")
+  decVal_bin =int(input())
+  binNum = 0
+  power = 0
+  while decVal_bin >0:
+    binNum += 10 ** power * (decVal_bin % 2)
+    decVal_bin //= 2
+    power += 1
+  print("Binary: " + str(binNum))
+  main();
+ 
+#[2] decimal to hexadecimal part
+def decToHex():
+ print("Enter Value: ")
+ decVal_hex =int(input())
+ hexVal = [10,11,12,13,14,15]
+ letters =['A','B','C','D','E','F']
+ hexLetter =""
+ hexNum =""
+ while decVal_hex > 0 :
+   remain = decVal_hex % 16
+   decVal_hex //=16
+   if remain > 9:
+     for x in range(7):
+       if remain == hexVal[x-1]:
+         hexLetter = letters[x-1]
+         hexNum = hexLetter + hexNum
+     else:
+       hexNum = str(remain) + hexNum
+   print("Hexadecimal: " + str(hexNum))
+   main();
+ 
+#[3] binary to decimal part
+def binToDec():
+  binaryNum = 0
+  print("Enter value: ")
+  binaryNumber = input()
+  for n in binaryNumber:
+    binaryNum = binaryNum * 2 + int(n)
+  print("Decimal: "+ str(binaryNum))
+  main();
+  
+#[4] binary to hexadecimal part
+def binToHex():
+  print("Enter value: ") 
+  binary = input()
+  hStr = '%0*X' % ((len(binary) + 3) // 4, int(binary, 2))
+  print('Hexadecimal:', hStr)
+  main();
+
+#function for calculating hexadecimal to decimal part 
+def hexDec(num):
+  num1 = ['0','1','2','3','4','5','6','7','8','9','10','A','B','C','D','E','F']
+  for i in range (len(num1)):
+    if num == num1[i]:
+      return i
+
+#[5] hexadecimal to decimal part
+def hexToDec():
+ decNum = 0
+ power_hex = 0
+ while (decNum == 0):
+   print("Enter value: ")
+   hexVal_dec =str.upper(input())
+   for num in range (len(hexVal_dec),0 , -1):
+     decNum = decNum + 16 **power_hex * hexDec(hexVal_dec[num - 1])
+     power_hex += 1
+   print("Decimal: " + str(decNum))
+   main();
+ 
+#[6] hexadecimal to binary
+def hexToBin():
+  print("Enter value: ")
+  hexVal_bin = str.upper(input())
+  hexNum = int(hexVal_bin,16)
+  binNumstr =""
+  while hexNum > 0 : 
+    binNumstr = str(hexNum % 2) + binNumstr
+    hexNum = hexNum >>1 
+  binaryNum = binNumstr
+  print("Binary: " + str(binaryNum))
+  main();
+
+def main():
+ print("Choose to convert into:\n[1] Decimal to binary \n[2] Decimal to Hexadecimal \n[3] Binary to decimal \n[4] Binary to Hexadecimal \n[5] Hexadecimal to decimal \n[6] Hexadecimal to binary \n")
+ convert = 0
+ convert =int(input())
+ if (convert == 1):
+   decToBin();
+ elif (convert == 2):
+   decToHex();
+ elif (convert == 3):
+   binToDec();
+ elif (convert == 4):
+   binToHex();
+ elif (convert == 5):
+   hexToDec(); 
+ elif (convert == 6):
+   hexToBin();
+main();
